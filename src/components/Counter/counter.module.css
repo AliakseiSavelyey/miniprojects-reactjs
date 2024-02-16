@@ -1,0 +1,14 @@
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.countMinus{
+  padding: 30px;
+  background-color: #fe43;
+}
+.countMinus{
+  padding: 30px;
+  background-color: #fe43;
+}
