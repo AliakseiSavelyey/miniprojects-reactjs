@@ -13,7 +13,7 @@ const Counter = () => {
   };
   return (
     <div className={s.counter}>
-      <div className="count">{count}</div>
+      <h1 className="count">{count}</h1>
       <button onClick={countPlus} className={s.countPlus}>
         Плюс +
       </button>
