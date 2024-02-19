@@ -3,6 +3,7 @@ import s from './Modal.module.css';
 
 const Modal = () => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className={s.modalBox}>
       <button
@@ -13,14 +14,13 @@ const Modal = () => {
       >
         Открыть модалку
       </button>
-      {
-        <div className={`${open ? s.show : s.overlay}`} id="overlay">
-          <div className={`${s.modal}`}>
-            <button onClick={() => setOpen(false)}>закрыть</button>
-            <h2 className={s.modalTitle}>модальное окно</h2>
-          </div>
+
+      <div className={`${s.overlay} ${open ? s.show : s.overlay}`} id="overlay">
+        <div className={`${s.modal}`}>
+          <button onClick={() => setOpen(false)} className={s.closeBtn}>закрыть</button>
+          <h2 className={s.modalTitle}>модальное окно</h2>
         </div>
-      }
+      </div>
     </div>
   );
 };
