@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../Users.module.css'
+import s from '../Users.module.css';
 
 export const Success = ({ count }) => {
   return (
@@ -7,7 +7,12 @@ export const Success = ({ count }) => {
       <img src="/assets/success.svg" alt="Success" />
       <h3>Успешно!</h3>
       <p>Всем {count} пользователям отправлено приглашение.</p>
-      <button className={s.sendInviteBtn}>Назад</button>
+      <button
+        onClick={() => window.location.reload()}
+        className={s.sendInviteBtn}
+      >
+        Назад
+      </button>
     </div>
   );
 };
