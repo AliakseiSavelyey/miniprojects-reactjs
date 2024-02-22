@@ -12,7 +12,7 @@ const Modal = () => {
         aria-expanded="false"
         aria-controls="overlay"
       >
-        Открыть модалку
+        Открыть модальное окно
       </button>
 
       <div className={`${s.overlay} ${open ? s.show : s.overlay}`} id="overlay">
