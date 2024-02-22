@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/miniprojects-reactjs/static/css/main.bb29c223.css",
+    "main.js": "/miniprojects-reactjs/static/js/main.73948b90.js",
+    "index.html": "/miniprojects-reactjs/index.html",
+    "main.bb29c223.css.map": "/miniprojects-reactjs/static/css/main.bb29c223.css.map",
+    "main.73948b90.js.map": "/miniprojects-reactjs/static/js/main.73948b90.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb29c223.css",
+    "static/js/main.73948b90.js"
+  ]
+}
