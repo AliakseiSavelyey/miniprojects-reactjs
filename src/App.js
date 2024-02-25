@@ -1,9 +1,9 @@
 import './App.css';
+import Convertor from './components/Convertor/Convertor';
 import Counter from './components/Counter/Counter';
 import Modal from './components/Modal/Modal';
 import Quez from './components/Quez/Quez';
 import Users from './components/Users/Users';
-
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       <Counter />
       <Modal />
       <Quez />
-      <Users/>
+      <Users />
+      <Convertor />
     </div>
   );
 }
