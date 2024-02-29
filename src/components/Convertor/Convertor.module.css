@@ -64,9 +64,8 @@
   align-items: center;
   flex: 0 0 50px;
   border-right: 0;
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
+}
+.currenciesImage {
+  width: 16px;
+  height: 16px;
 }
