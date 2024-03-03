@@ -5,6 +5,8 @@ import s from './Convertor.module.css';
 function Convertor() {
   const [rates, setRates] = useState({});
 
+
+  // https://belarusbank.by/api/kursExchange
   useEffect(() => {
     fetch('https://cdn.cur.su/api/latest.json')
       .then((res) => {
