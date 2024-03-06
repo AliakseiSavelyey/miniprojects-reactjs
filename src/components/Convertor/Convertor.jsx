@@ -8,7 +8,7 @@ function Convertor() {
 
   // https://belarusbank.by/api/kursExchange
   useEffect(() => {
-    fetch('https://cdn.cur.su/api/latest.json')
+    fetch('https://belarusbank.by/api/kursExchange')
       .then((res) => {
         res.json();
       })

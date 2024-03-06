@@ -1,4 +1,5 @@
 import './App.css';
+import Collection from './components/Collection/Collection';
 import Convertor from './components/Convertor/Convertor';
 import Counter from './components/Counter/Counter';
 import Modal from './components/Modal/Modal';
@@ -13,6 +14,7 @@ function App() {
       <Quez />
       <Users />
       <Convertor />
+      <Collection />
     </div>
   );
 }
