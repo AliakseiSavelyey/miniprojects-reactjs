@@ -53,17 +53,18 @@ function Collection() {
     <div className={s.Collection}>
       <h1 className={s.collectionTitle}>Моя коллекция фотографий</h1>
       <div className={s.top}>
-        <ul className={s.tags}>
-          {cats.map((obj, i) => (
+        <ul className={s.pagination}>
+          {[...Array(5)].map((_, i) => (
             <li
-              onClick={() => setCategoryId(i)}
-              className={categoryId === i ? `${s.active}` : ''}
-              key={obj.name}
+              onClick={() => setPage(i + 1)}
+              className={page === i + 1 ? `${s.active}` : ''}
+              key={i}
             >
-              {obj.name}
+              {i + 1}
             </li>
           ))}
         </ul>
+        
         <input
           value={searchValue}
           onChange={(e) => {
@@ -86,17 +87,17 @@ function Collection() {
             ))
         )}
       </div>
-      <ul className={s.pagination}>
-        {[...Array(5)].map((_, i) => (
-          <li
-            onClick={() => setPage(i + 1)}
-            className={page === i + 1 ? `${s.active}` : ''}
-            key={i}
-          >
-            {i + 1}
-          </li>
-        ))}
-      </ul>
+      <ul className={s.tags}>
+          {cats.map((obj, i) => (
+            <li
+              onClick={() => setCategoryId(i)}
+              className={categoryId === i ? `${s.active}` : ''}
+              key={obj.name}
+            >
+              {obj.name}
+            </li>
+          ))}
+        </ul>
     </div>
   );
 }
