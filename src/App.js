@@ -9,11 +9,11 @@ import Users from './components/Users/Users';
 function App() {
   return (
     <div className="app">
-      <Counter />
-      <Modal />
-      <Quez />
-      <Users />
-      <Convertor />
+      {/* <Counter /> */}
+      {/* <Modal /> */}
+      {/* <Quez /> */}
+      {/* <Users /> */}
+      {/* <Convertor /> */}
       <Collection />
     </div>
   );

@@ -83,7 +83,7 @@ ul {
   list-style: none;
   padding: 0;
 }
-ul > li {
+.progressItem {
   padding: 15px;
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
@@ -91,6 +91,6 @@ ul > li {
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }
-ul > li:hover {
+.progressItem:hover {
   border: 2px solid rgba(0, 0, 0, 0.3);
 }

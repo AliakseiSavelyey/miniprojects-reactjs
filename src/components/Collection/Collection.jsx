@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './Collection.module.css';
+
+const cats = [
+  { name: 'Все' },
+  { name: 'Море' },
+  { name: 'Горы' },
+  { name: 'Архитектура' },
+  { name: 'Города' },
+];
 
 function CollectionList({ name, images }) {
   return (
@@ -16,34 +24,78 @@ function CollectionList({ name, images }) {
 }
 
 function Collection() {
+  const [categoryId, setCategoryId] = useState(0);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchValue, setSearchValue] = useState('');
+  const [collections, setCollections] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const category = categoryId ? `category=${categoryId}` : '';
+
+    fetch(
+      `https://65e867144bb72f0a9c4f3740.mockapi.io/collection?page=${page}&limit=3${category}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        setCollections(json);
+      })
+      .catch((err) => {
+        console.warn(err);
+        alert('ошибка');
+      })
+      .finally(() => setIsLoading(false));
+  }, [categoryId, page]);
+
   return (
     <div className={s.Collection}>
-      <h1>Моя коллекция фотографий</h1>
+      <h1 className={s.collectionTitle}>Моя коллекция фотографий</h1>
       <div className={s.top}>
         <ul className={s.tags}>
-          <li className={s.active}>Все</li>
-          <li>Горы</li>
-          <li>Море</li>
-          <li>Архитектура</li>
-          <li>Города</li>
+          {cats.map((obj, i) => (
+            <li
+              onClick={() => setCategoryId(i)}
+              className={categoryId === i ? `${s.active}` : ''}
+              key={obj.name}
+            >
+              {obj.name}
+            </li>
+          ))}
         </ul>
-        <input className={s.searchInput} placeholder="Поиск по названию" />
-      </div>
-      <div className={s.content}>
-        <CollectionList
-          name="Путешествие по миру"
-          images={[
-            'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-            'https://images.unsplash.com/photo-1560840067-ddcaeb7831d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-            'https://images.unsplash.com/photo-1531219572328-a0171b4448a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-            'https://images.unsplash.com/photo-1573108724029-4c46571d6490?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fGNpdHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-          ]}
+        <input
+          value={searchValue}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
+          className={s.searchInput}
+          placeholder="Поиск по названию"
         />
       </div>
+      <div className={s.content}>
+        {isLoading ? (
+          <h2>Loading...</h2>
+        ) : (
+          collections
+            .filter((obj) =>
+              obj.name.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((obj, index) => (
+              <CollectionList key={index} name={obj.name} images={obj.photos} />
+            ))
+        )}
+      </div>
       <ul className={s.pagination}>
-        <li>1</li>
-        <li className={s.active}>2</li>
-        <li>3</li>
+        {[...Array(5)].map((_, i) => (
+          <li
+            onClick={() => setPage(i + 1)}
+            className={page === i + 1 ? `${s.active}` : ''}
+            key={i}
+          >
+            {i + 1}
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -57,7 +57,7 @@ function Game({ question, onClickVariant, step }) {
       <h1 className={s.questionTitle}>{question.title}</h1>
       <ul>
         {question.variants.map((el, index) => (
-          <li onClick={() => onClickVariant(index)} key={index}>
+          <li className={s.progressItem} onClick={() => onClickVariant(index)} key={index}>
             {el}
           </li>
         ))}
